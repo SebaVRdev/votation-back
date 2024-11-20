@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  voting-db:
+    container_name: mongo_voting
+    image: mongo:6.0
+    restart: always
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=seba
+      - MONGO_INITDB_ROOT_PASSWORD=seba123
+      - MONGO_INITDB_DATABASE=voting_db

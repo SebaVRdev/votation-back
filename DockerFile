@@ -1,0 +1,17 @@
+FROM node:21-alpine3.19
+
+WORKDIR /usr/src/app
+
+COPY package.json ./ 
+COPY package-lock.json ./ 
+
+RUN npm install
+
+COPY . .
+
+# Usamos esta variable para que NestJS quede observando los cambios
+ENV NODE_ENV=development
+
+CMD ["npm", "run", "start:dev"]
+
+EXPOSE 3000

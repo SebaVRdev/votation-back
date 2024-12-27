@@ -9,8 +9,4 @@ export class CreateUserDto {
 
     @IsString()
     password: string
-
-    @IsBoolean()
-    @IsOptional() // Opcional para diferenciar el tipo de autenticación
-    isGoogleAccount?: boolean;
 }

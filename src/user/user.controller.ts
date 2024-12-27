@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { EmptyListInterceptor } from 'src/interceptors/custom.interceptor';
 
 @Controller('user')
 export class UserController {
@@ -12,6 +13,7 @@ export class UserController {
     return this.userService.createUser(createUserDto);
   }
 
+  @UseInterceptors(EmptyListInterceptor)
   @Get()
   findAll() {
     return this.userService.findAll();
